@@ -1,0 +1,39 @@
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+/*#winner {
+	height: 3em;
+	width: 100em;
+}*/
+
+#canvasDiv {
+	padding: 3em
+}
+
+.btn {
+	border-width: 0;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+	background-color: #3D85C6;
+	color: #ffffff;
+}
+
+.btn span {
+	display: block;
+	padding: 1em 2em
+}
+
+#winner span {
+	font-size: 3em
+}

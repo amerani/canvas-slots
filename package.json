@@ -1,0 +1,22 @@
+{
+  "name": "thumbtack-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node_modules/webpack-dev-server/bin/webpack-dev-server.js"
+  },
+  "author": "Alek Merani",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-es2015": "^6.9.0"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.9.2",
+    "webpack": "^1.13.1"
+  }
+}
