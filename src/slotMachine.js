@@ -1,27 +1,26 @@
 let slotMachine = (config) => {	
 	
 	let canvas, context, winnerDiv, 
-		width, height, numReels, itemsPerReel, imgXOffset, imgYOffset,
-		reelItemHeight, reelItemWidth, reelImgHeight, reelImgWidth,
-		winningRow, tid
+		width, height, 
+		numReels, itemsPerReel, 
+		reelItemWidth, reelItemHeight, 
+		reelImgWidth, reelImgHeight, imgXOffset, imgYOffset,
+		reels, winningRow, winningRowId, timerId
 
-	let reels = []
 	
-	let init = () => {
-		debugger
-		winnerDiv = document.getElementById(config.winnerId)
-		winningRow = []
-		winnerDiv.innerHTML = ""
+	let init = (initReels) => {
 
 		canvas = document.getElementById(config.canvasId)
-		context = canvas.getContext('2d')
+		context = canvas.getContext('2d')		
+		context.clearRect(0,0,width,height)
+		winnerDiv = document.getElementById(config.winnerId)
+		winnerDiv.innerHTML = ""
+
 		width = canvas.width = config.width
 		height = canvas.height = config.height
-		context.clearRect(0,0,width,height)
 
 		numReels = config.numReels	
 		itemsPerReel = config.itemsPerReel	
-
 
 		reelItemWidth = width / numReels
 		reelItemHeight = height / itemsPerReel
@@ -30,6 +29,10 @@ let slotMachine = (config) => {
 		reelImgHeight = reelItemHeight / 2
 		imgXOffset = reelImgWidth / 2
 		imgYOffset = reelImgHeight / 2
+
+		reels = initReels
+		winningRow = []
+		winningRowId = config.winningRowId
 
 		//context.rect(0, height / (numReels * 2), width, height - 2 * (height / numReels))
 		//context.clip()
@@ -42,7 +45,7 @@ let slotMachine = (config) => {
 	let setWinner = () => {
 		let first = winningRow[0].type
 		if(winningRow.every((item) => item.type === first)){
-			winnerDiv.innerHTML = "<span>" + first + "</span>"
+			winnerDiv.innerHTML = `<span> Congrats! You have won a cup of ${first}. </span>`
 		}
 	}
 
@@ -74,10 +77,10 @@ let slotMachine = (config) => {
 		renderReel(id, reels[id])
 		delay = delay * (Math.random() * (1.6 - 1) + 1)
 		if(delay < 750)
-			tid = setTimeout(renderer, delay, id, delay)
+			timerId = setTimeout(renderer, delay, id, delay)
 		else {
-			tid = null
-			winningRow.push(reels[id][1])
+			timerId = null
+			winningRow.push(reels[id][winningRowId])
 			winningRow.length === numReels && setWinner()
 		}
 	}

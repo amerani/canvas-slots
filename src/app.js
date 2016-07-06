@@ -2,6 +2,7 @@ import reels from './reels'
 import slotMachine from './slotMachine'
 
 initSlotMachine()
+
 function initSlotMachine(){
 	let config = {
 		canvasId: "canvas",
@@ -9,7 +10,8 @@ function initSlotMachine(){
 		width: window.innerWidth  / 3,
 		height: window.innerHeight / 3,
 		numReels: 3,
-		itemsPerReel: 3
+		itemsPerReel: 3,
+		winningRowId: 1
 	}
 
 	let slot = new slotMachine(config)
@@ -26,7 +28,7 @@ function initSlotMachine(){
 	let spinHandler = (ev) => {
 			slot.spin()
 			return false
-		}
+	}
 
 	document.getElementById("spin")	
 		.addEventListener("click", spinHandler, false)			
