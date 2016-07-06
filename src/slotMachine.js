@@ -85,15 +85,6 @@ let slotMachine = (config) => {
 		}
 	}
 
-	let addReel = (reel) => {
-		return new Promise((resolve, reject) => {
-			Promise.all(reel).then((data) => {
-				reels.push(data)
-				resolve()
-			})
-		})
-	}
-
 	let spin = () => {
 		winningRow = []
 		winnerDiv.innerHTML = ""
@@ -104,7 +95,6 @@ let slotMachine = (config) => {
 
 	return {
 		init: init,
-		addReel: addReel,
 		spin: spin
 	}
 

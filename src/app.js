@@ -14,14 +14,22 @@ function initSlotMachine(){
 		winningRowId: 1
 	}
 
-	let slot = new slotMachine(config)
+	let slot = slotMachine(config)
+
+	let reels = initReels().map((reel) => {
+		return new Promise((resolve, reject) => {
+			Promise.all(reel).then((reelWithImg) => {
+				resolve(reelWithImg)
+			})
+		})
+	})
 
 	let enableSpin = () => {
 		document.getElementById('spin').disabled = false
 	}
 
-	Promise.all(initReels(slot)).then((data) => {
-		slot.init()
+	Promise.all(reels).then((data) => {
+		slot.init(data)
 		enableSpin()
 	})
 
@@ -34,7 +42,7 @@ function initSlotMachine(){
 		.addEventListener("click", spinHandler, false)			
 }
 
-function initReels(slot){
+function initReels(){
 
 	let loadImage = (reel) => {
 		return new Promise((resolve, reject) => {
@@ -52,8 +60,5 @@ function initReels(slot){
 				return reel.map((item) => {
 					return loadImage(item)
 				})
-			})
-			.map((reel) => {
-				return slot.addReel(reel)
-			})		
+			})	
 }
