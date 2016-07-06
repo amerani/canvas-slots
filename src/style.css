@@ -13,18 +13,17 @@ body {
 	flex-direction: column;
 }
 
-/*#winner {
-	height: 3em;
-	width: 100em;
-}*/
-
 #canvasDiv {
-	padding: 3em
+	padding: 3em;
+}
+
+#canvas {
+	box-shadow: 0 0 1em rgba(0, 0, 0, .75);
 }
 
 .btn {
 	border-width: 0;
-	box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+	box-shadow: 0 .1em .4em rgba(0, 0, 0, .75);
 	background-color: #3D85C6;
 	color: #ffffff;
 }
@@ -34,6 +33,23 @@ body {
 	padding: 1em 2em
 }
 
-#winner span {
-	font-size: 3em
+@keyframes winning {
+		from {
+			transform: scale(1,1);
+		}
+		to {
+			transform: scale(2,2);
+		}
+}
+
+#winner {
+	height: 1em;
+	font-size: 1em;
+	padding: 1.5em;
+	animation: winning 1s 200ms alternate infinite;
+}
+
+#credit {
+	display: flex;
+	align-items: flex-end;
 }
