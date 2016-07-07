@@ -1,21 +1,22 @@
+//model of the reels of the slot machine
 const reels = [
 	[
 		{
 			name: "coffeeMaker",
 			type: "coffee",
-			imageSrc: "./images/coffeeMaker.svg",
+			imageSrc: "images/coffeeMaker.svg",
 			color: "#6F4E37"
 		},
 		{
 			name: "teapot",
 			type: "tea",
-			imageSrc: "./images/teapot.svg",
+			imageSrc: "images/teapot.svg",
 			color: "#d0f0c0"
 		},
 		{
 			name: "espressoMachine",
 			type: "espresso",
-			imageSrc: "./images/espressoMachine.svg",
+			imageSrc: "images/espressoMachine.svg",
 			color: "#201212"
 		}
 	],
